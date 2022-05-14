@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HectreToolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/primaryColor</item>
+        <item name="navigationIcon">@drawable/ic_back</item>
+        <item name="layout_collapseMode">pin</item>
+    </style>
+    <style name="TextAppearance.Title" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.Normal" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="TextAppearance.Small.Label" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textColor">@color/color_gray_light</item>
+    </style>
+    <style name="TextAppearance.Small.Value" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+</resources>

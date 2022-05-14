@@ -23,10 +23,6 @@
 
     <style name="Theme.HectreChallenge.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="HectreToolbar" parent="Widget.Material3.Toolbar">
-        <item name="android:background">@color/primaryColor</item>
-        <item name="navigationIcon">@drawable/ic_back</item>
-        <item name="layout_collapseMode">pin</item>
-    </style>
+
 
 </resources>

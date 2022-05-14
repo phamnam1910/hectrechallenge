@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvAva"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/bg_circle_cyan"
+            tools:text="BB" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvName"
+            style="@style/TextAppearance.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="@id/tvAva"
+            app:layout_constraintStart_toEndOf="@id/tvAva"
+            app:layout_constraintTop_toTopOf="@id/tvAva"
+            tools:text="Barco" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrchardLabel"
+            style="@style/TextAppearance.Small.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAva"
+            tools:text="Barco" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrchard"
+            style="@style/TextAppearance.Small.Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            app:layout_constraintStart_toEndOf="@id/tvOrchardLabel"
+            app:layout_constraintTop_toTopOf="@id/tvOrchardLabel"
+            tools:text="Barco" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvBlockLabel"
+            style="@style/TextAppearance.Small.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrchardLabel"
+            tools:text="Barco" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvBlock"
+            style="@style/TextAppearance.Small.Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            app:layout_constraintStart_toEndOf="@id/tvBlockLabel"
+            app:layout_constraintTop_toTopOf="@id/tvBlockLabel"
+            tools:text="Barco" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvRateType"
+            style="@style/TextAppearance.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="@string/rate_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBlockLabel" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPieceRate"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:backgroundTint="@color/brown"
+            android:backgroundTintMode="src_over"
+            android:text="@string/piece_rate"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/btnWages"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRateType" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWages"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:backgroundTint="@color/brown"
+            android:backgroundTintMode="src_over"
+            android:text="@string/piece_rate"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnPieceRate"
+            app:layout_constraintTop_toTopOf="@id/btnPieceRate" />
+
+        <TextView
+            android:id="@+id/tvWagesNotice"
+            style="@style/TextAppearance.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/color_text_notice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPieceRate"
+            tools:text="Canker removal will be paid by wages in this timesheet" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/viewRow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWagesNotice" />
+
+        <LinearLayout
+            android:id="@+id/llRowTextField"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewRow" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

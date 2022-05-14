@@ -3,5 +3,7 @@
 
     <!-- RateVolumnScreen -->
     <string name="rv_toolbar_title">Update Rate &amp; Volume</string>
-
+    <string name="add_max_tree">ADD MAX TREES</string>
+    <string name="rate_type">Rate Type</string>
+    <string name="piece_rate">piece rate</string>
 </resources>
