@@ -13,12 +13,22 @@ class UpdateRateAndVolumnScreen : Fragment() {
 
     private lateinit var viewBinding : ViewDataBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_first,container,false)
+        viewBinding = DataBindingUtil.inflate(inflater, R.layout.rate_volumn_screen,container,false)
         return viewBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+    }
+
+    private fun initView() {
+
     }
 }

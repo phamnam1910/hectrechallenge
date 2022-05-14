@@ -45,6 +45,8 @@ dependencies {
     def gson_version = "2.9.0"
     def logging_interceptor_version = "5.0.0-alpha.2"
     def okhttp_version = "5.0.0-alpha.2"
+    def sdp_version = "1.0.6"
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
@@ -70,4 +72,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$gson_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+
+    //sdp
+    implementation "com.intuit.sdp:sdp-android:$sdp_version"
 }
