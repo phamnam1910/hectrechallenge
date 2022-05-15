@@ -20,7 +20,7 @@ class UpdateRateAndVolumnScreen : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = DataBindingUtil.inflate(inflater, R.layout.rate_volumn_screen,container,false)
+        viewBinding = DataBindingUtil.inflate(inflater, R.layout.screen_update_rate_volume,container,false)
         return viewBinding.root
     }
 

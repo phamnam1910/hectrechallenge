@@ -6,4 +6,8 @@
     <string name="add_max_tree">ADD MAX TREES</string>
     <string name="rate_type">Rate Type</string>
     <string name="piece_rate">piece rate</string>
+    <string name="apply_all">apply to all</string>
+    <string name="rate">Rate</string>
+    <string name="usd_currency">$</string>
+    <string name="per_hour">/hour</string>
 </resources>

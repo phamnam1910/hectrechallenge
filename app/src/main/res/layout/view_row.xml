@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="4" />
+
+        <View
+            android:id="@+id/view_dot"
+            android:layout_width="@dimen/_3sdp"
+            android:layout_height="@dimen/_3sdp"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:background="@drawable/bg_circle_primary_color"
+            android:translationZ="@dimen/_90sdp"
+            app:layout_constraintEnd_toEndOf="@id/btnRow"
+            app:layout_constraintTop_toTopOf="@id/btnRow" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

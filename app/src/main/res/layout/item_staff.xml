@@ -107,6 +107,15 @@
             app:layout_constraintStart_toEndOf="@id/btnPieceRate"
             app:layout_constraintTop_toTopOf="@id/btnPieceRate" />
 
+        <include
+            android:id="@+id/viewEditRate"
+            layout="@layout/view_edit_rate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPieceRate" />
+
         <TextView
             android:id="@+id/tvWagesNotice"
             style="@style/TextAppearance.Normal"
@@ -137,6 +146,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewRow" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

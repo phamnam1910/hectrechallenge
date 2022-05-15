@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:gravity="center_vertical">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        app:prefixText="@string/usd_currency"
+        app:suffixText="@string/per_hour"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:id="@+id/edtRateEdit"
+            android:imeOptions="actionDone"
+            android:hint="@string/rate"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/apply_all"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:id="@+id/btnApplyAll"
+        android:textStyle="bold"
+        android:textColor="@color/primaryColor"
+        android:layout_marginStart="@dimen/_12sdp"/>
+</LinearLayout>
