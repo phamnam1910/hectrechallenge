@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.nampt.hectrechallenge.R
-import com.nampt.hectrechallenge.databinding.RateVolumnScreenBinding
+import com.nampt.hectrechallenge.databinding.ScreenUpdateRateVolumeBinding
 import com.nampt.hectrechallenge.presentation.adapters.JobAdapter
 
-class UpdateRateAndVolumnScreen : Fragment() {
+class UpdateRateAndVolumeScreen : Fragment() {
 
-    private lateinit var viewBinding : RateVolumnScreenBinding
+    private lateinit var viewBinding : ScreenUpdateRateVolumeBinding
 
 
     override fun onCreateView(

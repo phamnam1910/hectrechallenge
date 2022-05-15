@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.nampt.hectrechallenge.presentation.ratevolumn.UpdateRateAndVolumnScreen"
+        android:name="com.nampt.hectrechallenge.presentation.ratevolumn.UpdateRateAndVolumeScreen"
         tools:layout="@layout/screen_update_rate_volume">
     </fragment>
 </navigation>
