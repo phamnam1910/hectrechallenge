@@ -4,18 +4,32 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_24sdp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddMaxTree"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvAva"
+            android:textSize="@dimen/_9sdp"
+            app:layout_constraintBottom_toBottomOf="@id/tvAva"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/add_max_tree"
+            app:strokeColor="@color/primaryColor" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvAva"
-            android:layout_width="@dimen/_48sdp"
-            android:layout_height="@dimen/_48sdp"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_12sdp"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/_16sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
             tools:background="@drawable/bg_circle_cyan"
             tools:text="BB" />
 
@@ -36,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/orchard"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAva"
             tools:text="Barco" />
@@ -56,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_2sdp"
+            android:text="@string/block"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvOrchardLabel"
             tools:text="Barco" />
@@ -101,42 +117,48 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:backgroundTint="@color/brown"
             android:backgroundTintMode="src_over"
-            android:text="@string/piece_rate"
+            android:text="@string/wages"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnPieceRate"
             app:layout_constraintTop_toTopOf="@id/btnPieceRate" />
 
-        <include
-            android:id="@+id/viewEditRate"
-            layout="@layout/view_edit_rate"
-            android:layout_width="0dp"
+        <FrameLayout
+            android:id="@+id/flRate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPieceRate" />
+            app:layout_constraintTop_toBottomOf="@id/btnPieceRate">
 
-        <TextView
-            android:id="@+id/tvWagesNotice"
-            style="@style/TextAppearance.Normal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:textColor="@color/color_text_notice"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPieceRate"
-            tools:text="Canker removal will be paid by wages in this timesheet" />
+            <include
+                android:id="@+id/viewEditRate"
+                layout="@layout/view_edit_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvWagesNotice"
+                style="@style/TextAppearance.Normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/color_text_notice"
+                tools:text="Canker removal will be paid by wages in this timesheet" />
+        </FrameLayout>
+
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/viewRow"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
+            app:alignContent="flex_start"
             app:flexDirection="row"
             app:flexWrap="wrap"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvWagesNotice" />
+            app:layout_constraintTop_toBottomOf="@id/flRate" />
 
         <LinearLayout
             android:id="@+id/llRowTextField"
@@ -146,6 +168,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewRow" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/brown"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

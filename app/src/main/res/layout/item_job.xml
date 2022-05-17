@@ -5,8 +5,10 @@
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
         android:elevation="@dimen/_4sdp"
-        app:cardCornerRadius="@dimen/_8sdp">
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@string/add_max_tree"
+                    android:textSize="@dimen/_9sdp"
                     app:strokeColor="@color/primaryColor" />
 
             </LinearLayout>
@@ -48,7 +51,6 @@
                 android:id="@+id/rcv_staff"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingVertical="@dimen/_12sdp"
                 android:paddingStart="@dimen/_16sdp"
                 android:paddingEnd="@dimen/_12sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

@@ -6,8 +6,14 @@
     <string name="add_max_tree">ADD MAX TREES</string>
     <string name="rate_type">Rate Type</string>
     <string name="piece_rate">piece rate</string>
+    <string name="wages">wages</string>
     <string name="apply_all">apply to all</string>
     <string name="rate">Rate</string>
     <string name="usd_currency">$</string>
     <string name="per_hour">/hour</string>
+    <string name="orchard">Orchard</string>
+    <string name="block">Block</string>
+    <string name="wages_notice">%s will be paid by wages in this timesheet</string>
+    <string name="tree_for_row">Tree for row %s</string>
+    <string name="row_name">%s (%s)</string>
 </resources>

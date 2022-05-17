@@ -10,6 +10,7 @@ val localDataSourceModule = module {
     single {
         Room
             .databaseBuilder(androidContext(), TimeSheetDatabase::class.java, "timesheet_db")
+            .fallbackToDestructiveMigration()
             .build()
     }
 
