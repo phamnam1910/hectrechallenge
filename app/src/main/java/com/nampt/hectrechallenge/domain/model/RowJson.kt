@@ -5,10 +5,12 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class RowJson( @SerializedName("id")
-               val id: String? = null,
+class RowJson(
+    @SerializedName("id")
+    val id: String? = null,
 
     @SerializedName("treeDone")
-var treeDone: Int? = null):Parcelable {
+    var treeDone: Int? = null
+) : Parcelable {
 
 }

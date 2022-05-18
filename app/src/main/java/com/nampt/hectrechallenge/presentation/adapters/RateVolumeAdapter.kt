@@ -1,7 +1,6 @@
 package com.nampt.hectrechallenge.presentation.adapters
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -10,50 +9,115 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.nampt.hectrechallenge.R
-import com.nampt.hectrechallenge.databinding.ItemStaffBinding
-import com.nampt.hectrechallenge.databinding.ViewEditTreesNumberBinding
-import com.nampt.hectrechallenge.databinding.ViewRowBinding
-import com.nampt.hectrechallenge.domain.model.*
+import com.nampt.hectrechallenge.databinding.*
+import com.nampt.hectrechallenge.domain.model.RateTypeJson
+import com.nampt.hectrechallenge.domain.model.RowDetailJson
+import com.nampt.hectrechallenge.domain.model.RowJson
 import com.nampt.hectrechallenge.domain.util.getDetailRow
 import com.nampt.hectrechallenge.domain.util.getRowIdParallel
 import com.nampt.hectrechallenge.util.setOnDebounceClick
 
-class StaffAdapter :
-    ListAdapter<JobDetailJson, StaffAdapter.StaffViewHolder>(StaffDiffUtil()) {
+class RateVolumeAdapter :
+    RecyclerView.Adapter<RateVolumeAdapter.RateVolumeViewHolder<RateVolumeItem>>() {
+
+    interface JobViewHolderListener {
+        fun onAddMaxTreeClick(id: String?, position: Int)
+        fun onRowClick(rowId: String?, detailJobId: String?, jobId: String?)
+        fun onApplyRate(rate: String?, jobId: String?)
+    }
+
+    var jobListener: JobViewHolderListener? = null
+
+    private var listData = mutableListOf<RateVolumeItem>()
     private var detailRows: List<RowDetailJson> = mutableListOf()
-    private var job: RateVolumeJson? = null
-    private var staff: List<JobDetailJson> = mutableListOf()
-    var staffListener: StaffViewHolderListener? = null
 
+    //    private var job: RateVolumeJson? = null
+//    private var staff: List<JobDetailJson> = mutableListOf()
 
-    fun replaceData(job: RateVolumeJson, detailRows: List<RowDetailJson>) {
-        this.detailRows = detailRows
-        this.job = job
-        this.staff = job.jobDetail ?: mutableListOf()
-        submitList(staff)
+    fun addDetailRows(detailRows: List<RowDetailJson>?) {
+        if (detailRows != null) {
+            this.detailRows = detailRows
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StaffViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding: ItemStaffBinding = DataBindingUtil.inflate(
-            layoutInflater, R.layout.item_staff, parent, false
-        )
-        return StaffViewHolder(binding)
+    fun replaceData(listData: List<RateVolumeItem>) {
+        this.listData = listData.toMutableList()
     }
 
-    override fun onBindViewHolder(holder: StaffViewHolder, position: Int) {
-        holder.bindView()
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RateVolumeViewHolder<RateVolumeItem> {
+        val inflater = LayoutInflater.from(parent.context)
+        when (viewType) {
+            RateVolumeItemViewType.Header.value -> {
+                return HeaderViewHolder(
+                    ItemHeaderBinding.inflate(
+                        inflater,
+                        parent,
+                        false
+                    )
+                ) as RateVolumeViewHolder<RateVolumeItem>
+            }
+            RateVolumeItemViewType.Body.value -> {
+                return BodyViewHolder(
+                    ItemStaffBinding.inflate(
+                        inflater,
+                        parent,
+                        false
+                    )
+                ) as RateVolumeViewHolder<RateVolumeItem>
+            }
+        }
+        return FooterViewHolder(
+            ItemFooterBinding.inflate(
+                inflater,
+                parent,
+                false
+            )
+        ) as RateVolumeViewHolder<RateVolumeItem>
     }
 
-    inner class StaffViewHolder(private val binding: ItemStaffBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("SetTextI18n")
-        fun bindView() {
-            val staff = staff[adapterPosition]
+    override fun onBindViewHolder(holder: RateVolumeViewHolder<RateVolumeItem>, position: Int) {
+        holder.bindView(listData[position])
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return listData[position].viewType
+    }
+
+    abstract inner class RateVolumeViewHolder<T>(viewBinding: ViewDataBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {
+        open fun bindView(item: T) {
+
+        }
+    }
+
+    inner class HeaderViewHolder(val binding: ItemHeaderBinding) :
+        RateVolumeViewHolder<RateVolumeItem.HeaderItem>(binding) {
+        override fun bindView(item: RateVolumeItem.HeaderItem) {
+            val job = item.JobJson
+            binding.tvJob.text = job?.name
+            binding.btnAddMaxTree.apply {
+                setOnDebounceClick {
+                    jobListener?.onAddMaxTreeClick(job?.id, adapterPosition)
+                }
+            }
+        }
+    }
+
+    inner class BodyViewHolder(val binding: ItemStaffBinding) :
+        RateVolumeViewHolder<RateVolumeItem.BodyItem>(binding) {
+
+        private val enableColor = ContextCompat.getColorStateList(itemView.context, R.color.blue)
+        private val disableColor = ContextCompat.getColorStateList(itemView.context, R.color.brown)
+
+        override fun bindView(item: RateVolumeItem.BodyItem) {
+            val staff = item.staff ?: return
             if (adapterPosition == 0) {
                 binding.divider.visibility = View.GONE
             } else {
@@ -68,33 +132,33 @@ class StaffAdapter :
             binding.tvOrchard.text = staff.orchard?.name
             binding.tvBlock.text = staff.block?.name
             staff.ratetype?.apply {
-                bindRateType(this.id)
+                bindRateType(this.id, item)
             }
             binding.btnPieceRate.setOnDebounceClick {
-                bindRateType(RateTypeJson.RateType.PIECE_RATE.value)
-                staffListener?.onRateTypeClick(
-                    RateTypeJson.RateType.PIECE_RATE,
-                    staff.id,
-                    job?.job?.id
-                )
+                bindRateType(RateTypeJson.RateType.PIECE_RATE.value, item)
+//                staffListener?.onRateTypeClick(
+//                    RateTypeJson.RateType.PIECE_RATE,
+//                    staff.id,
+//                    job?.job?.id
+//                )
             }
             binding.btnWages.setOnDebounceClick {
-                bindRateType(RateTypeJson.RateType.WAGES.value)
-                staffListener?.onRateTypeClick(
-                    RateTypeJson.RateType.WAGES,
-                    staff.id,
-                    job?.job?.id
-                )
+                bindRateType(RateTypeJson.RateType.WAGES.value, item)
+//                staffListener?.onRateTypeClick(
+//                    RateTypeJson.RateType.WAGES,
+//                    staff.id,
+//                    job?.job?.id
+//                )
             }
             binding.viewEditRate.edtRateEdit.setText(staff.salary?.rate?.toString())
             binding.viewEditRate.edtRateEdit.setOnEditorActionListener(object :
                 TextView.OnEditorActionListener {
                 override fun onEditorAction(p0: TextView?, p1: Int, p2: KeyEvent?): Boolean {
                     if (p1 == EditorInfo.IME_ACTION_DONE) {
-                        staffListener?.onEditRateDone(
-                            binding.viewEditRate.edtRateEdit.text.toString(), staff.id,
-                            job?.job?.id
-                        )
+//                        staffListener?.onEditRateDone(
+//                            binding.viewEditRate.edtRateEdit.text.toString(), staff.id,
+//                            job?.job?.id
+//                        )
                         return true
                     }
                     return false
@@ -102,30 +166,30 @@ class StaffAdapter :
             })
 
             binding.viewEditRate.btnApplyAll.setOnDebounceClick {
-                staffListener?.onApplyRateToAll(
+                jobListener?.onApplyRate(
                     binding.viewEditRate.edtRateEdit.text.toString(),
-                    job?.job?.id
+                    item.jobDetail.job?.id
                 )
             }
-            initListRow()
+            initListRow(item)
         }
 
-        private fun initListRow() {
-            val listRowParallel = job?.getRowIdParallel()
-            val enableColor = ContextCompat.getColorStateList(itemView.context, R.color.blue)
-            val disableColor = ContextCompat.getColorStateList(itemView.context, R.color.brown)
+        private fun initListRow(item: RateVolumeItem.BodyItem) {
+            val listRowParallel = item.jobDetail.getRowIdParallel()
+
             binding.viewRow.removeAllViews()
             binding.llRowTextField.removeAllViews()
-            val staff = staff[adapterPosition]
-            staff.row?.let {
+            val staff = item.staff
+            staff?.row?.let {
                 for (row in it) {
                     val detailRow = detailRows.getDetailRow(row.id)
-                    addRowButton(row, enableColor, disableColor, listRowParallel, detailRow)
+                    addRowButton(row, listRowParallel, detailRow, item)
                     addEditRowView(row, detailRow)
                 }
             }
         }
 
+        @SuppressLint("SetTextI18n")
         private fun addEditRowView(
             row: RowJson,
             rowDetailJson: RowDetailJson?
@@ -146,16 +210,16 @@ class StaffAdapter :
                     rowDetailJson?.place,
                     rowDetailJson?.remainTree?.toString()
                 )
+                editBinding.tvTotalTree.text = "/${rowDetailJson?.totalTree}"
                 binding.llRowTextField.addView(editBinding.root)
             }
         }
 
         private fun addRowButton(
             row: RowJson,
-            enableColor: ColorStateList?,
-            disableColor: ColorStateList?,
             listRowParallel: List<String>?,
-            detailRow: RowDetailJson?
+            detailRow: RowDetailJson?,
+            item: RateVolumeItem.BodyItem
         ) {
             val rowBinding: ViewRowBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(itemView.context), R.layout.view_row, null, false
@@ -172,11 +236,17 @@ class StaffAdapter :
                 rowBinding.viewDot.visibility = View.GONE
             }
             rowBinding.btnRow.text = detailRow?.name
-
+            rowBinding.btnRow.setOnDebounceClick {
+                jobListener?.onRowClick(
+                    row.id,
+                    item.staff?.id,
+                    item.jobDetail.job?.id
+                )
+            }
             binding.viewRow.addView(rowBinding.root)
         }
 
-        private fun bindRateType(id: String?) {
+        private fun bindRateType(id: String?, item: RateVolumeItem.BodyItem) {
             val context = itemView.context
             val enableColor = ContextCompat.getColorStateList(context, R.color.primaryColor)
             val disableColor = ContextCompat.getColorStateList(context, R.color.brown)
@@ -193,7 +263,10 @@ class StaffAdapter :
                 }
                 RateTypeJson.RateType.WAGES.value -> {
                     binding.tvWagesNotice.text =
-                        itemView.context.getString(R.string.wages_notice, job?.job?.name)
+                        itemView.context.getString(
+                            R.string.wages_notice,
+                            item?.jobDetail?.job?.name
+                        )
                     binding.btnPieceRate.backgroundTintList = disableColor
                     binding.btnWages.backgroundTintList = enableColor
                     binding.viewEditRate.root.visibility = View.GONE
@@ -203,22 +276,16 @@ class StaffAdapter :
                 }
             }
         }
-
     }
 
-    class StaffDiffUtil : DiffUtil.ItemCallback<JobDetailJson>() {
-        override fun areItemsTheSame(oldItem: JobDetailJson, newItem: JobDetailJson): Boolean {
-            return oldItem == newItem
-        }
+    inner class FooterViewHolder(viewBinding: ItemFooterBinding) :
+        RateVolumeViewHolder<RateVolumeItem.FooterItem>(viewBinding) {
+        override fun bindView(item: RateVolumeItem.FooterItem) {
 
-        override fun areContentsTheSame(oldItem: JobDetailJson, newItem: JobDetailJson): Boolean {
-            return oldItem.equals(newItem)
         }
     }
 
-    interface StaffViewHolderListener {
-        fun onRateTypeClick(rateType: RateTypeJson.RateType, jobDetailId: String?, jobId: String?)
-        fun onEditRateDone(rate: String, jobDetailId: String?, jobId: String?)
-        fun onApplyRateToAll(rate: String, jobId: String?)
+    override fun getItemCount(): Int {
+        return listData.size
     }
 }

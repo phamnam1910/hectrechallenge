@@ -8,18 +8,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.nampt.hectrechallenge.R
 import com.nampt.hectrechallenge.databinding.ScreenUpdateRateVolumeBinding
-import com.nampt.hectrechallenge.domain.model.RateTypeJson
 import com.nampt.hectrechallenge.presentation.adapters.JobAdapter
-import com.nampt.hectrechallenge.presentation.adapters.StaffAdapter
+import com.nampt.hectrechallenge.presentation.adapters.RateVolumeAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class UpdateRateAndVolumeScreen : Fragment(), JobAdapter.JobViewHolderListener,
-    StaffAdapter.StaffViewHolderListener {
+class UpdateRateAndVolumeScreen : Fragment(), RateVolumeAdapter.JobViewHolderListener {
 
     private lateinit var viewBinding: ScreenUpdateRateVolumeBinding
     private val rateVolumeViewModel by viewModel<RateVolumeViewModel>()
     private val jobAdapter = JobAdapter()
-
+    private val rateVolumeAdapter = RateVolumeAdapter()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,18 +37,36 @@ class UpdateRateAndVolumeScreen : Fragment(), JobAdapter.JobViewHolderListener,
 
 
     private fun initView() {
-        viewBinding.rcvRateVolume.itemAnimator = null
-        viewBinding.rcvRateVolume.setHasFixedSize(true)
-        viewBinding.rcvRateVolume.adapter = jobAdapter.apply {
-            jobListener = this@UpdateRateAndVolumeScreen
-            staffListener = this@UpdateRateAndVolumeScreen
+//        viewBinding.rcvRateVolume.adapter = jobAdapter.apply {
+//            jobListener = this@UpdateRateAndVolumeScreen
+//            staffListener = this@UpdateRateAndVolumeScreen
+//        }
+        viewBinding.rcvRateVolume.adapter = rateVolumeAdapter.apply {
+            this.jobListener = this@UpdateRateAndVolumeScreen
         }
     }
 
     private fun initObserver() {
-        rateVolumeViewModel.rateVolumeLiveData.observe(viewLifecycleOwner) {
-            if (it.jobs != null && it.detailRows != null) {
-                jobAdapter.replaceData(it.jobs, it.detailRows)
+//        rateVolumeViewModel.rateVolumeLiveData.observe(viewLifecycleOwner) {
+//            if (it.jobs != null && it.detailRows != null) {
+//                jobAdapter.replaceData(it.jobs, it.detailRows)
+//            }
+//        }
+
+        rateVolumeViewModel.rateVolumeItemLiveData.observe(viewLifecycleOwner) {
+            it?.let {
+                rateVolumeAdapter.addDetailRows(rateVolumeViewModel.detailRows)
+                rateVolumeAdapter.replaceData(it)
+                rateVolumeAdapter.notifyItemRangeInserted(0, rateVolumeAdapter.itemCount)
+            }
+        }
+
+        rateVolumeViewModel.uiState.observe(viewLifecycleOwner) {
+            when (it) {
+                is RateVolumeViewModel.RateVolumeUIState.RefreshJobState -> {
+                    rateVolumeAdapter.replaceData(it.item)
+                    rateVolumeAdapter.notifyItemRangeChanged(it.position, it.size + 1)
+                }
             }
         }
     }
@@ -60,24 +76,32 @@ class UpdateRateAndVolumeScreen : Fragment(), JobAdapter.JobViewHolderListener,
     }
 
 
-    override fun onRateTypeClick(
-        rateType: RateTypeJson.RateType,
-        jobDetailId: String?,
-        jobId: String?
-    ) {
-        TODO("Not yet implemented")
+//    override fun onRateTypeClick(
+//        rateType: RateTypeJson.RateType,
+//        jobDetailId: String?,
+//        jobId: String?
+//    ) {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override fun onEditRateDone(rate: String, jobDetailId: String?, jobId: String?) {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override fun onApplyRateToAll(rate: String, jobId: String?) {
+//        TODO("Not yet implemented")
+//    }
+
+    override fun onAddMaxTreeClick(id: String?, position: Int) {
+        rateVolumeViewModel.addMaxTreeForJob(id, position)
     }
 
-    override fun onEditRateDone(rate: String, jobDetailId: String?, jobId: String?) {
-        TODO("Not yet implemented")
+    override fun onRowClick(rowId: String?, detailJobId: String?, jobId: String?) {
+        rateVolumeViewModel.changeStaffRow(rowId, detailJobId, jobId)
     }
 
-    override fun onApplyRateToAll(rate: String, jobId: String?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onAddMaxTreeClick(id: String?) {
-        rateVolumeViewModel.addMaxTreeForJob(id)
+    override fun onApplyRate(rate: String?, jobId: String?) {
+        rateVolumeViewModel.applyRateAll(rate, jobId)
     }
 
 }

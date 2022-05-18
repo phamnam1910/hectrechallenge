@@ -56,16 +56,16 @@
         },
         "salary": {
           "id": "2",
-          "rate": -1
+          "rate": 100
         },
         "ratetype": {
-          "id": "2",
-          "name": "Wages"
+          "id": "1",
+          "name": "Piece rate"
         },
         "row": [
           {
             "id": "1",
-            "treeDone": 0
+            "treeDone": null
           },
           {
             "id": "2",
@@ -111,7 +111,7 @@
         "row": [
           {
             "id": "4",
-            "treeDone": 0
+            "treeDone": null
           },
           {
             "id": "5",

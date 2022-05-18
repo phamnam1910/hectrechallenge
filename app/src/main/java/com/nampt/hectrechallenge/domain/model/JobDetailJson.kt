@@ -22,10 +22,10 @@ data class JobDetailJson(
     var salary: SalaryJson? = null,
 
     @SerializedName("ratetype")
-    var ratetype: RateTypeJson? = null,
+    val ratetype: RateTypeJson? = null,
 
     @SerializedName("row")
-    val row: List<RowJson>? = null
+    var row: List<RowJson>? = null
 ) : Parcelable {
 
 }

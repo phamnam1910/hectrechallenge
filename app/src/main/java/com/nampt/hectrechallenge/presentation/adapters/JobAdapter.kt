@@ -1,12 +1,10 @@
 package com.nampt.hectrechallenge.presentation.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import com.nampt.hectrechallenge.R
 import com.nampt.hectrechallenge.databinding.ItemJobBinding
 import com.nampt.hectrechallenge.domain.model.RateVolumeJson
@@ -48,11 +46,6 @@ class JobAdapter : ListAdapter<RateVolumeJson, JobAdapter.JobViewHolder>(JobsDif
             val job = jobs[adapterPosition]
             binding.tvJob.text = job.job?.name
             binding.btnAddMaxTree.apply {
-//                visibility = if (job.jobDetail != null && job.jobDetail.size > 1) {
-//                    View.VISIBLE
-//                } else {
-//                    View.INVISIBLE
-//                }
                 setOnDebounceClick {
                     jobListener?.onAddMaxTreeClick(job.job?.id)
                 }

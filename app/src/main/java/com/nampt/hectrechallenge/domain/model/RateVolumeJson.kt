@@ -7,10 +7,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class RateVolumeJson(
     @SerializedName("job")
-    var job: JobJson? = null,
+    val job: JobJson? = null,
 
     @SerializedName("jobDetail")
-    var jobDetail: List<JobDetailJson>? = null
+    val jobDetail: List<JobDetailJson>? = null
 ) : Parcelable {
 
 }

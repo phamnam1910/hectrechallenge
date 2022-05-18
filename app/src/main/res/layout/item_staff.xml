@@ -1,181 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/_12sdp"
-        android:paddingBottom="@dimen/_24sdp">
+        android:layout_marginHorizontal="0.5dp"
+        app:cardCornerRadius="0dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAddMaxTree"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/tvAva"
-            android:textSize="@dimen/_9sdp"
-            app:layout_constraintBottom_toBottomOf="@id/tvAva"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/add_max_tree"
-            app:strokeColor="@color/primaryColor" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvAva"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_16sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider"
-            tools:background="@drawable/bg_circle_cyan"
-            tools:text="BB" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvName"
-            style="@style/TextAppearance.Normal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_4sdp"
-            app:layout_constraintBottom_toBottomOf="@id/tvAva"
-            app:layout_constraintStart_toEndOf="@id/tvAva"
-            app:layout_constraintTop_toTopOf="@id/tvAva"
-            tools:text="Barco" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvOrchardLabel"
-            style="@style/TextAppearance.Small.Label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="@string/orchard"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvAva"
-            tools:text="Barco" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvOrchard"
-            style="@style/TextAppearance.Small.Value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_4sdp"
-            app:layout_constraintStart_toEndOf="@id/tvOrchardLabel"
-            app:layout_constraintTop_toTopOf="@id/tvOrchardLabel"
-            tools:text="Barco" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvBlockLabel"
-            style="@style/TextAppearance.Small.Label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:text="@string/block"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvOrchardLabel"
-            tools:text="Barco" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvBlock"
-            style="@style/TextAppearance.Small.Value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_4sdp"
-            app:layout_constraintStart_toEndOf="@id/tvBlockLabel"
-            app:layout_constraintTop_toTopOf="@id/tvBlockLabel"
-            tools:text="Barco" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvRateType"
-            style="@style/TextAppearance.Normal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:text="@string/rate_type"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvBlockLabel" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPieceRate"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_48sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:backgroundTint="@color/brown"
-            android:backgroundTintMode="src_over"
-            android:text="@string/piece_rate"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@id/btnWages"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvRateType" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnWages"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_48sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:backgroundTint="@color/brown"
-            android:backgroundTintMode="src_over"
-            android:text="@string/wages"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnPieceRate"
-            app:layout_constraintTop_toTopOf="@id/btnPieceRate" />
-
-        <FrameLayout
-            android:id="@+id/flRate"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPieceRate">
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_24sdp">
 
-            <include
-                android:id="@+id/viewEditRate"
-                layout="@layout/view_edit_rate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/tvWagesNotice"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvAva"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                tools:background="@drawable/bg_circle_cyan"
+                tools:text="BB" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvName"
                 style="@style/TextAppearance.Normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                app:layout_constraintBottom_toBottomOf="@id/tvAva"
+                app:layout_constraintStart_toEndOf="@id/tvAva"
+                app:layout_constraintTop_toTopOf="@id/tvAva"
+                tools:text="Barco" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvOrchardLabel"
+                style="@style/TextAppearance.Small.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/orchard"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAva"
+                tools:text="Barco" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvOrchard"
+                style="@style/TextAppearance.Small.Value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                app:layout_constraintStart_toEndOf="@id/tvOrchardLabel"
+                app:layout_constraintTop_toTopOf="@id/tvOrchardLabel"
+                tools:text="Barco" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvBlockLabel"
+                style="@style/TextAppearance.Small.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:text="@string/block"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvOrchardLabel"
+                tools:text="Barco" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvBlock"
+                style="@style/TextAppearance.Small.Value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                app:layout_constraintStart_toEndOf="@id/tvBlockLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBlockLabel"
+                tools:text="Barco" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvRateType"
+                style="@style/TextAppearance.Normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:text="@string/rate_type"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBlockLabel" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPieceRate"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_48sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:textColor="@color/color_text_notice"
-                tools:text="Canker removal will be paid by wages in this timesheet" />
-        </FrameLayout>
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:backgroundTint="@color/brown"
+                android:backgroundTintMode="src_over"
+                android:text="@string/piece_rate"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@id/btnWages"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRateType" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWages"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_48sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:backgroundTint="@color/brown"
+                android:backgroundTintMode="src_over"
+                android:text="@string/wages"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnPieceRate"
+                app:layout_constraintTop_toTopOf="@id/btnPieceRate" />
+
+            <FrameLayout
+                android:id="@+id/flRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnPieceRate">
+
+                <include
+                    android:id="@+id/viewEditRate"
+                    layout="@layout/view_edit_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvWagesNotice"
+                    style="@style/TextAppearance.Normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/color_text_notice"
+                    tools:text="Canker removal will be paid by wages in this timesheet" />
+            </FrameLayout>
 
 
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/viewRow"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:alignContent="flex_start"
-            app:flexDirection="row"
-            app:flexWrap="wrap"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/flRate" />
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/viewRow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:alignContent="flex_start"
+                app:flexDirection="row"
+                app:flexWrap="wrap"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flRate" />
 
-        <LinearLayout
-            android:id="@+id/llRowTextField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewRow" />
+            <LinearLayout
+                android:id="@+id/llRowTextField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewRow" />
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/brown"
-            app:layout_constraintTop_toTopOf="parent" />
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/brown"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

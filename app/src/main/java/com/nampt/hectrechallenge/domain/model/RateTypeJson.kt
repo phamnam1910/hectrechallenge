@@ -10,7 +10,8 @@ class RateTypeJson(
     var id: String? = null,
 
     @SerializedName("name")
-var name: String? = null) : Parcelable {
+    var name: String? = null
+) : Parcelable {
     enum class RateType(val value: String) {
         PIECE_RATE("1"), WAGES("2")
     }

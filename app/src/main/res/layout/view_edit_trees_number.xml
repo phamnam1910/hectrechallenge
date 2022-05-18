@@ -1,42 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvForRow"
-        style="@style/TextAppearance.Small.Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Tree for row 4" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayoutNumberOfRow"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_2sdp"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtNumberOfRow"
-            android:layout_width="match_parent"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvForRow"
+            style="@style/TextAppearance.Small.Value"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:imeOptions="actionDone"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+            tools:text="Tree for row 4" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvRowName"
-        style="@style/TextAppearance.Small.Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="@dimen/_2sdp"
-        tools:text="Yi wan" />
-</LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:id="@+id/edtLayout"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/bg_stroke_border_edt">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtNumberOfRow"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                tools:text="1231"
+                android:imeOptions="actionDone"
+                app:layout_constraintEnd_toStartOf="@id/tvTotalTree"
+                android:inputType="number"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="@dimen/_14sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/tvTotalTree"
+                android:textStyle="bold"
+                android:textColor="@color/color_gray_light"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/_14sdp"
+                tools:text="/556"
+                app:layout_constraintStart_toEndOf="@id/edtNumberOfRow"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvRowName"
+            style="@style/TextAppearance.Small.Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_3sdp"
+            tools:text="Yi wan" />
+    </LinearLayout>
 </layout>
