@@ -123,7 +123,13 @@ class RateVolumeViewModel(
                 listItem.add(RateVolumeItem.HeaderItem(job.job))
                 job.jobDetail?.let {
                     for (staff in it) {
-                        listItem.add(RateVolumeItem.BodyItem(staff, job))
+                        listItem.add(
+                            RateVolumeItem.BodyItem(
+                                staff,
+                                job,
+                                isShowDivider = it.indexOf(staff) != 0
+                            )
+                        )
                     }
                 }
                 listItem.add(RateVolumeItem.FooterItem)

@@ -8,7 +8,11 @@ sealed class RateVolumeItem(val viewType: Int) {
     data class HeaderItem(val JobJson: JobJson?) :
         RateVolumeItem(RateVolumeItemViewType.Header.value)
 
-    data class BodyItem(val staff: JobDetailJson?, val jobDetail: RateVolumeJson) :
+    data class BodyItem(
+        val staff: JobDetailJson?,
+        val jobDetail: RateVolumeJson,
+        val isShowDivider: Boolean = true
+    ) :
         RateVolumeItem(RateVolumeItemViewType.Body.value)
 
     object FooterItem : RateVolumeItem(RateVolumeItemViewType.Footer.value)

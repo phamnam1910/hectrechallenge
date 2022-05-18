@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.nampt.hectrechallenge.R
 import com.nampt.hectrechallenge.databinding.ScreenUpdateRateVolumeBinding
-import com.nampt.hectrechallenge.presentation.adapters.JobAdapter
 import com.nampt.hectrechallenge.presentation.adapters.RateVolumeAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,7 +15,6 @@ class UpdateRateAndVolumeScreen : Fragment(), RateVolumeAdapter.JobViewHolderLis
 
     private lateinit var viewBinding: ScreenUpdateRateVolumeBinding
     private val rateVolumeViewModel by viewModel<RateVolumeViewModel>()
-    private val jobAdapter = JobAdapter()
     private val rateVolumeAdapter = RateVolumeAdapter()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -88,10 +86,6 @@ class UpdateRateAndVolumeScreen : Fragment(), RateVolumeAdapter.JobViewHolderLis
 //        TODO("Not yet implemented")
 //    }
 //
-//    override fun onApplyRateToAll(rate: String, jobId: String?) {
-//        TODO("Not yet implemented")
-//    }
-
     override fun onAddMaxTreeClick(id: String?, position: Int) {
         rateVolumeViewModel.addMaxTreeForJob(id, position)
     }

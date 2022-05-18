@@ -118,10 +118,10 @@ class RateVolumeAdapter :
 
         override fun bindView(item: RateVolumeItem.BodyItem) {
             val staff = item.staff ?: return
-            if (adapterPosition == 0) {
-                binding.divider.visibility = View.GONE
-            } else {
+            if (item.isShowDivider) {
                 binding.divider.visibility = View.VISIBLE
+            } else {
+                binding.divider.visibility = View.GONE
             }
             binding.tvAva.apply {
                 background = ContextCompat.getDrawable(itemView.context, R.drawable.bg_circle_cyan)
