@@ -43,7 +43,6 @@ class TimeSheetServiceImpl(client: Retrofit) : TimeSheetService {
                     }
                 }
             timeSheetApi.getRateAndVolume().enqueue(callback)
-            awaitClose { callback }
         }
     }
 
@@ -72,7 +71,6 @@ class TimeSheetServiceImpl(client: Retrofit) : TimeSheetService {
             }
             timeSheetApi.getDetailRow().enqueue(callback)
 
-            awaitClose { callback }
         }
     }
 }

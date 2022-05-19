@@ -22,7 +22,6 @@ class GetDetailRowUseCaseImplFake(private val timeSheetRepository: TimeSheetRepo
     override fun getDetailRow(): Flow<DataResult<List<RowDetailJson>>> {
         return flow {
             emit(DataResult.Loading)
-            delay(2000)
             val response =
                 TimeSheetApplication.applicationContext()?.assets?.open("mockGetListRowApi.json")
                     ?.bufferedReader().use {

@@ -22,7 +22,6 @@ class GetListJobUseCaseImplFake(private val timeSheetRepository: TimeSheetReposi
     override  fun getListJob(): Flow<DataResult<List<RateVolumeJson>>> {
         return flow {
             emit(DataResult.Loading)
-            delay(2000)
             val response =
                 TimeSheetApplication.applicationContext()?.assets?.open("mockGetListJobAPI.json")
                     ?.bufferedReader().use {
