@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.Flow
 internal class TimeSheetRepositoryImpl(
     val timeSheetService: TimeSheetService
 ) : TimeSheetRepository {
-    override suspend fun getListJob(): Flow<DataResult<List<RateVolumeJson>>> {
+    override fun getListJob(): Flow<DataResult<List<RateVolumeJson>>> {
         return timeSheetService.getListJob()
     }
 
-    override suspend fun getDetailRows(): Flow<DataResult<List<RowDetailJson>>> {
+    override fun getDetailRows(): Flow<DataResult<List<RowDetailJson>>> {
         return timeSheetService.getDetailRows()
     }
 

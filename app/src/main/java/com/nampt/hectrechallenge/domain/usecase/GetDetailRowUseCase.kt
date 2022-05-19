@@ -5,5 +5,5 @@ import com.nampt.hectrechallenge.domain.model.RowDetailJson
 import kotlinx.coroutines.flow.Flow
 
 interface GetDetailRowUseCase {
-    suspend fun getDetailRow(): Flow<DataResult<List<RowDetailJson>>>
+    fun getDetailRow(): Flow<DataResult<List<RowDetailJson>>>
 }

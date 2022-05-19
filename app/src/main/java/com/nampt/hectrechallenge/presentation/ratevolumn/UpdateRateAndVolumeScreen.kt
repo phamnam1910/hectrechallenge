@@ -35,22 +35,12 @@ class UpdateRateAndVolumeScreen : Fragment(), RateVolumeAdapter.JobViewHolderLis
 
 
     private fun initView() {
-//        viewBinding.rcvRateVolume.adapter = jobAdapter.apply {
-//            jobListener = this@UpdateRateAndVolumeScreen
-//            staffListener = this@UpdateRateAndVolumeScreen
-//        }
         viewBinding.rcvRateVolume.adapter = rateVolumeAdapter.apply {
             this.jobListener = this@UpdateRateAndVolumeScreen
         }
     }
 
     private fun initObserver() {
-//        rateVolumeViewModel.rateVolumeLiveData.observe(viewLifecycleOwner) {
-//            if (it.jobs != null && it.detailRows != null) {
-//                jobAdapter.replaceData(it.jobs, it.detailRows)
-//            }
-//        }
-
         rateVolumeViewModel.rateVolumeItemLiveData.observe(viewLifecycleOwner) {
             it?.let {
                 rateVolumeAdapter.addDetailRows(rateVolumeViewModel.detailRows)

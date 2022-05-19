@@ -28,9 +28,7 @@ class RateVolumeViewModel(
 
     var detailRows: List<RowDetailJson>? = null
     private var jobs: List<RateVolumeJson>? = null
-    private var jobItem: MutableList<RateVolumeItem>? = null
 
-    val rateVolumeLiveData = MutableLiveData<LoadingUiModel>()
     val rateVolumeItemLiveData = MutableLiveData<List<RateVolumeItem>>()
     val uiState = SingleLiveEvent<RateVolumeUIState>()
 
@@ -66,15 +64,6 @@ class RateVolumeViewModel(
                     }
                 }
         }
-    }
-
-    private fun postRateVolumeData() {
-        rateVolumeLiveData.postValue(
-            LoadingUiModel(
-                detailRows = detailRows,
-                jobs = jobs
-            )
-        )
     }
 
     fun addMaxTreeForJob(id: String?, position: Int) {

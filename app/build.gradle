@@ -50,7 +50,7 @@ dependencies {
     def sdp_version = "1.0.6"
     def flexbox_version = "3.0.0"
     def lifecycle_version = "2.4.1"
-
+    def mockk_version = "1.12.4"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -82,4 +82,10 @@ dependencies {
     implementation "com.google.android.flexbox:flexbox:$flexbox_version"
     //view-model lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    //unittest
+    testImplementation "io.mockk:mockk:${mockk_version}"
+    testImplementation "io.mockk:mockk-agent-jvm:${mockk_version}"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
 }

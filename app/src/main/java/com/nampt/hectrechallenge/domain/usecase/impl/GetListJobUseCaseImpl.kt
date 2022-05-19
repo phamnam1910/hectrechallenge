@@ -12,14 +12,14 @@ import kotlinx.coroutines.flow.flow
 
 class GetListJobUseCaseImpl(private val timeSheetRepository: TimeSheetRepository) :
     GetListJobUseCase {
-    override suspend fun getListJob(): Flow<DataResult<List<RateVolumeJson>>> {
+    override fun getListJob(): Flow<DataResult<List<RateVolumeJson>>> {
         return timeSheetRepository.getListJob()
     }
 }
 
 class GetListJobUseCaseImplFake(private val timeSheetRepository: TimeSheetRepository) :
     GetListJobUseCase {
-    override suspend fun getListJob(): Flow<DataResult<List<RateVolumeJson>>> {
+    override  fun getListJob(): Flow<DataResult<List<RateVolumeJson>>> {
         return flow {
             emit(DataResult.Loading)
             delay(2000)
