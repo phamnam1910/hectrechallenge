@@ -25,7 +25,7 @@ import org.junit.Rule
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
+class RateVolumeViewModelTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
